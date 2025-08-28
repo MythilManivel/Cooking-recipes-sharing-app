@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const Recipe = require('../models/Recipe');
 const { protect, checkOwnership } = require('../middleware/auth');
 
-// Transform incoming client payload to Recipe schema shape
 function normalizeRecipePayload(body, authorId) {
   const {
     title,
@@ -212,5 +211,6 @@ router.post('/:id/favorite', protect, async (req, res) => {
     res.status(500).json({ error: 'Failed to update favorite' });
   }
 });
+
 
 module.exports = router;
